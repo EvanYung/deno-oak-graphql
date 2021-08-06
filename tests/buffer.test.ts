@@ -1,7 +1,7 @@
 #!/usr/bin/env deno test --allow-all buffer.ts
 
 import { assertEquals } from 'https://deno.land/std@0.96.0/testing/asserts.ts'
-import { BufferReader } from '../buffer_reader/mod.ts'
+import { BufferReader } from '../utils/buffer_reader/mod.ts'
 import { Buffer } from 'https://deno.land/std@0.96.0/io/buffer.ts'
 
 const { test } = Deno
