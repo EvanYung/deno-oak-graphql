@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "server": "deno run -A --location=http://127.0.0.1:8000 --watch --import-map=import_map.json server.ts"
+  },
+  "files": ["./server.ts"]
+}
