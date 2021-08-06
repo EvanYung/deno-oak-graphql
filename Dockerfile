@@ -12,6 +12,6 @@ USER deno
 COPY . .
 # Compile the main app so that it doesn't need to be compiled each startup/entry.
 # RUN deno cache server.ts
-RUN deno cache server.ts
+RUN deno cache --import-map=import_map.json server.ts
 
 CMD ["run", "-A", "--location=http://127.0.0.1:8001", "--import-map=import_map.json", "server.ts"]
