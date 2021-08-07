@@ -1,6 +1,6 @@
-import { Application, Router } from 'oak'
-import chalkin from 'chalkin'
-import logger from 'logger'
+import { Application, Router } from 'deps'
+import { chalkin } from 'deps'
+import { logger } from 'deps'
 
 import { Static, ErrorCatcher } from './middlewares/mod.ts'
 
