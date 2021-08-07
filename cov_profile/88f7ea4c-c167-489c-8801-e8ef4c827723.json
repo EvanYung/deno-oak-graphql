@@ -1,0 +1,28 @@
+{
+  "scriptId": "10",
+  "url": "deno:extensions/web/00_infra.js",
+  "functions": [
+    {
+      "functionName": "byteLowerCase",
+      "ranges": [
+        {
+          "startOffset": 4145,
+          "endOffset": 4347,
+          "count": 8
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "byteUpperCaseReplace",
+      "ranges": [
+        {
+          "startOffset": 4247,
+          "endOffset": 4335,
+          "count": 3
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

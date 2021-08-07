@@ -1,0 +1,42 @@
+{
+  "scriptId": "8",
+  "url": "deno:extensions/console/02_console.js",
+  "functions": [
+    {
+      "functionName": "inspectArgs",
+      "ranges": [
+        {
+          "startOffset": 46095,
+          "endOffset": 49455,
+          "count": 1
+        },
+        {
+          "startOffset": 46190,
+          "endOffset": 46197,
+          "count": 0
+        },
+        {
+          "startOffset": 46395,
+          "endOffset": 48851,
+          "count": 0
+        },
+        {
+          "startOffset": 48905,
+          "endOffset": 48937,
+          "count": 0
+        },
+        {
+          "startOffset": 49012,
+          "endOffset": 49158,
+          "count": 0
+        },
+        {
+          "startOffset": 49207,
+          "endOffset": 49431,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

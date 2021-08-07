@@ -1,0 +1,235 @@
+{
+  "scriptId": "82",
+  "url": "https://deno.land/std@0.96.0/io/buffer.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [
+        {
+          "startOffset": 0,
+          "endOffset": 10930,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "<instance_members_initializer>",
+      "ranges": [
+        {
+          "startOffset": 169,
+          "endOffset": 2736,
+          "count": 3
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "Buffer",
+      "ranges": [
+        {
+          "startOffset": 193,
+          "endOffset": 295,
+          "count": 3
+        },
+        {
+          "startOffset": 248,
+          "endOffset": 267,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "bytes",
+      "ranges": [
+        {
+          "startOffset": 300,
+          "endOffset": 468,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "empty",
+      "ranges": [
+        {
+          "startOffset": 473,
+          "endOffset": 538,
+          "count": 10
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "get length",
+      "ranges": [
+        {
+          "startOffset": 543,
+          "endOffset": 612,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "get capacity",
+      "ranges": [
+        {
+          "startOffset": 617,
+          "endOffset": 683,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "truncate",
+      "ranges": [
+        {
+          "startOffset": 688,
+          "endOffset": 940,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "reset",
+      "ranges": [
+        {
+          "startOffset": 945,
+          "endOffset": 1009,
+          "count": 2
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "#tryGrowByReslice",
+      "ranges": [
+        {
+          "startOffset": 1034,
+          "endOffset": 1211,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "#reslice",
+      "ranges": [
+        {
+          "startOffset": 1228,
+          "endOffset": 1358,
+          "count": 2
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "readSync",
+      "ranges": [
+        {
+          "startOffset": 1364,
+          "endOffset": 1662,
+          "count": 10
+        },
+        {
+          "startOffset": 1404,
+          "endOffset": 1544,
+          "count": 2
+        },
+        {
+          "startOffset": 1468,
+          "endOffset": 1509,
+          "count": 0
+        },
+        {
+          "startOffset": 1544,
+          "endOffset": 1661,
+          "count": 8
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "read",
+      "ranges": [
+        {
+          "startOffset": 1667,
+          "endOffset": 1755,
+          "count": 10
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "writeSync",
+      "ranges": [
+        {
+          "startOffset": 1760,
+          "endOffset": 1862,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "write",
+      "ranges": [
+        {
+          "startOffset": 1867,
+          "endOffset": 1955,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "#grow",
+      "ranges": [
+        {
+          "startOffset": 1968,
+          "endOffset": 2736,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "grow",
+      "ranges": [
+        {
+          "startOffset": 2742,
+          "endOffset": 2903,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "readFrom",
+      "ranges": [
+        {
+          "startOffset": 2908,
+          "endOffset": 3520,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "readFromSync",
+      "ranges": [
+        {
+          "startOffset": 3525,
+          "endOffset": 4133,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": false
+    }
+  ]
+}

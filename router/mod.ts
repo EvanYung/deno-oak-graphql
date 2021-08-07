@@ -1,4 +1,4 @@
-import { Router } from 'oak'
+import { Router } from 'deps'
 const router = new Router()
 
 import * as apiList from '../controllers/mod.ts'

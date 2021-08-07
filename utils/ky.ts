@@ -1,10 +1,10 @@
 // deno run --allow-net ky.ts
 
-import ky, { HTTPError } from 'https://cdn.skypack.dev/ky?dts'
+import { ky, HTTPError } from 'deps'
 import { getErrorStatusMessage } from './mod.ts'
 
 const KY = ky.extend({
-  prefixUrl: 'http://localhost:8000/deno',
+  prefixUrl: 'http://localhost:8001/deno',
   throwHttpErrors: false,
   timeout: 10000,
   retry: {

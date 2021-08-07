@@ -1,0 +1,60 @@
+{
+  "scriptId": "79",
+  "url": "file:///C:/Users/EvanYung/worker/deno-oak/tests/buffer.test.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [
+        {
+          "startOffset": 0,
+          "endOffset": 5198,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "fn",
+      "ranges": [
+        {
+          "startOffset": 351,
+          "endOffset": 829,
+          "count": 1
+        },
+        {
+          "startOffset": 674,
+          "endOffset": 823,
+          "count": 6
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "fn",
+      "ranges": [
+        {
+          "startOffset": 882,
+          "endOffset": 1363,
+          "count": 1
+        },
+        {
+          "startOffset": 1208,
+          "endOffset": 1357,
+          "count": 6
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "fn",
+      "ranges": [
+        {
+          "startOffset": 1419,
+          "endOffset": 2039,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "scriptId": "79",
+  "url": "file:///C:/Users/EvanYung/worker/deno-oak/tests/ky.test.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [
+        {
+          "startOffset": 0,
+          "endOffset": 1300,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [
+        {
+          "startOffset": 164,
+          "endOffset": 471,
+          "count": 1
+        },
+        {
+          "startOffset": 347,
+          "endOffset": 423,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

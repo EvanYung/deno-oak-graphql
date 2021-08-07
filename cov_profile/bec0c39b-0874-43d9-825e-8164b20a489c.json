@@ -1,0 +1,22 @@
+{
+  "scriptId": "23",
+  "url": "deno:extensions/web/12_location.js",
+  "functions": [
+    {
+      "functionName": "getLocationHref",
+      "ranges": [
+        {
+          "startOffset": 10441,
+          "endOffset": 10495,
+          "count": 3
+        },
+        {
+          "startOffset": 10482,
+          "endOffset": 10488,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

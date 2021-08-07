@@ -1,0 +1,44 @@
+{
+  "scriptId": "9",
+  "url": "deno:extensions/url/00_url.js",
+  "functions": [
+    {
+      "functionName": "<instance_members_initializer>",
+      "ranges": [
+        {
+          "startOffset": 7046,
+          "endOffset": 7077,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "URL",
+      "ranges": [
+        {
+          "startOffset": 7155,
+          "endOffset": 7630,
+          "count": 1
+        },
+        {
+          "startOffset": 7353,
+          "endOffset": 7476,
+          "count": 0
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "get href",
+      "ranges": [
+        {
+          "startOffset": 10381,
+          "endOffset": 10468,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

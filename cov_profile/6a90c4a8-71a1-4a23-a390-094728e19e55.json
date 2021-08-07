@@ -1,0 +1,17 @@
+{
+  "scriptId": "49",
+  "url": "deno:runtime/js/01_errors.js",
+  "functions": [
+    {
+      "functionName": "PermissionDenied",
+      "ranges": [
+        {
+          "startOffset": 396,
+          "endOffset": 476,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

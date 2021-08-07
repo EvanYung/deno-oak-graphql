@@ -1,6 +1,6 @@
-import { helpers, RouterContext } from 'oak'
+import { helpers, RouterContext } from 'deps'
 
-import { object, string, number, assert } from 'superstruct'
+import { object, string, number, assert } from 'deps'
 
 import { responseBody } from '../types/mod.d.ts'
 
