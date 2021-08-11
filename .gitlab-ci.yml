@@ -1,0 +1,57 @@
+image: denoland/deno:1.12.2
+
+stages:
+  - 测试阶段
+  - 构建阶段
+  - 部署阶段
+
+variables:
+  IMAGE: ${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${CI_PROJECT_NAME}
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: '/certs'
+
+before_script:
+  - ''
+
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - /root/.cache/deno
+
+测试任务:
+  stage: 测试阶段
+  allow_failure: true
+  only:
+    - master
+  before_script:
+    - deno cache dev_deps.ts
+    - deno cache deps.ts
+  script:
+    - deno test -A --import-map=import_map.json
+
+构建任务:
+  stage: 构建阶段
+  image: docker:stable
+  services:
+    - docker:dind
+  only:
+    - master
+  before_script:
+    - IMAGE_TAG=${IMAGE}:${CI_COMMIT_SHA:0:8}
+    - docker login -u ${HARBOR_USER} -p ${HARBOR_PWD} ${HARBOR_REGISTRY}
+  script:
+    - echo ${IMAGE_TAG}
+    - docker build -t ${IMAGE_TAG} .
+    - docker push ${IMAGE_TAG}
+
+部署任务:
+  stage: 部署阶段
+  image: docker:stable
+  services:
+    - docker:dind
+  only:
+    - master
+  before_script:
+    - IMAGE_TAG=${IMAGE}:${CI_COMMIT_SHA:0:8}
+  script:
+    - docker run -d --name deno-oak -p 8001:8001 ${IMAGE_TAG}
