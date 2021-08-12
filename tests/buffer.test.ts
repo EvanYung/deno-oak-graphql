@@ -1,8 +1,8 @@
 #!/usr/bin/env deno test --allow-all buffer.ts
 
-import { Buffer } from 'deps'
-import { assertEquals } from 'dev_deps'
-import { BufferReader } from 'utils/buffer_reader/mod.ts'
+import { Buffer } from '../deps.ts'
+import { assertEquals } from '../dev_deps.ts'
+import { BufferReader } from '../utils/buffer_reader/mod.ts'
 
 const { test } = Deno
 const encoder = new TextEncoder()

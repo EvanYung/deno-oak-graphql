@@ -1,6 +1,6 @@
-import { Application, Router } from 'deps'
-import { chalkin } from 'deps'
-import { logger } from 'deps'
+import { Application, Router } from './deps.ts'
+import { chalkin } from './deps.ts'
+import { logger } from './deps.ts'
 
 import { Static, ErrorCatcher } from './middlewares/mod.ts'
 

@@ -1,10 +1,10 @@
 // deno run --allow-net ky.ts
 
-import { ky, HTTPError } from 'deps'
+import { ky, HTTPError } from '../deps.ts'
 import { getErrorStatusMessage } from './mod.ts'
 
 const KY = ky.extend({
-  prefixUrl: 'http://localhost:8001/deno',
+  prefixUrl: 'http://192.168.2.2:8001/deno',
   throwHttpErrors: false,
   timeout: 10000,
   retry: {
