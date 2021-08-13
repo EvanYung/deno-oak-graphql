@@ -5,18 +5,17 @@ stages:
   - 构建阶段
   - 部署阶段
 
+variables:
+  IMAGE: ${HARBOR_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+
+.before_script: &before_script
+  - IMAGE_TAG=${IMAGE}:${CI_COMMIT_SHA:0:8}
+  - echo ${IMAGE_TAG}
+
 cache:
   key: ${CI_COMMIT_REF_NAME}
   paths:
     - /root/.cache/deno
-
-variables:
-  IMAGE: ${HARBOR_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
-
-before_script:
-  - echo '这是一个消息'
-  - IMAGE_TAG=${IMAGE}:${CI_COMMIT_SHA:0:8}
-  - echo ${IMAGE_TAG}
 
 测试任务:
   image: denoland/deno:1.12.2
@@ -24,10 +23,10 @@ before_script:
   allow_failure: true
   only:
     - release
-    - dev
   tags:
     - dev
   before_script:
+    - *before_script
     - deno cache dev_deps.ts
     - deno cache deps.ts
   script:
@@ -47,7 +46,7 @@ before_script:
     - dev
   dependencies: []
   before_script:
-    - IMAGE_TAG=${IMAGE}:${CI_COMMIT_SHA:0:8}
+    - *before_script
     - docker login -u ${HARBOR_USER} -p ${HARBOR_PWD} ${HARBOR_REGISTRY}
   script:
     - echo ${IMAGE_TAG}
@@ -66,7 +65,7 @@ before_script:
     - dev
   dependencies: []
   before_script:
-    - IMAGE_TAG=${IMAGE}:${CI_COMMIT_SHA:0:8}
+    - *before_script
   script:
     - docker stop ${CI_PROJECT_NAME} && docker rm ${CI_PROJECT_NAME}
     - docker run -d --name deno-oak -p 8001:8001 ${IMAGE_TAG}
