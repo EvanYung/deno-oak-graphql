@@ -26,7 +26,6 @@ cache:
   tags:
     - dev
   before_script:
-    - *before_script
     - deno cache dev_deps.ts
     - deno cache deps.ts
   script:
