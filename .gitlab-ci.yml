@@ -85,4 +85,4 @@ cache:
   script:
     - docker stop ${CI_PROJECT_NAME} && docker rm ${CI_PROJECT_NAME}
     - docker pull ${IMAGE_TAG}
-    - docker run -d --name deno-oak -p 8001:8001 ${IMAGE_TAG}
+    - docker run -d --name ${CI_PROJECT_NAME} -p 8001:8001 ${IMAGE_TAG}
