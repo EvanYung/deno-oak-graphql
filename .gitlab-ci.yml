@@ -12,11 +12,6 @@ variables:
   - IMAGE_TAG=${IMAGE}:${CI_COMMIT_SHA:0:8}
   - echo ${IMAGE_TAG}
 
-cache:
-  key: ${CI_COMMIT_REF_NAME}
-  paths:
-    - /root/.cache/deno
-
 测试任务:
   image: denoland/deno:1.12.2
   stage: 测试阶段
@@ -66,7 +61,7 @@ cache:
     - *before_script
   script:
     - docker stop ${CI_PROJECT_NAME} && docker rm ${CI_PROJECT_NAME}
-    - docker run -d --name deno-oak -p 8001:8001 ${IMAGE_TAG}
+    - docker run -d --name ${CI_PROJECT_NAME} -p 8001:8001 ${IMAGE_TAG}
 
 生产环境任务:
   stage: 部署阶段
