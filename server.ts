@@ -1,5 +1,5 @@
 import { Application, Router } from './deps.ts'
-// import { chalkin } from './deps.ts'
+import { chalkin } from './deps.ts'
 import { logger } from './deps.ts'
 
 import { Static, ErrorCatcher } from './middlewares/mod.ts'
@@ -9,7 +9,7 @@ import routerApi from './router/mod.ts'
 const app = new Application()
 const router = new Router({ prefix: '/deno' })
 app.addEventListener('listen', ({ hostname, port, secure }) => {
-  console.log(`Listening on: ${`${secure ? 'https://' : 'http://'}${hostname ?? 'localhost'}:${port}`}`)
+  console.log(`Listening on: ${chalkin.green(`${secure ? 'https://' : 'http://'}${hostname ?? 'localhost'}:${port}`)}`)
 })
 
 app.addEventListener('error', (evt) => {
@@ -31,4 +31,4 @@ router.use(routerApi.routes())
 
 app.use(router.routes()).use(router.allowedMethods())
 
-await app.listen({ hostname: '127.0.0.1', port: 443 })
+await app.listen({ hostname: '127.0.0.1' ,port: 8001 })
