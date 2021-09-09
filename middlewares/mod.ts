@@ -1,5 +1,5 @@
 import { Middleware, send } from '../deps.ts'
-import { colors } from '../dev_deps.ts'
+import { colors } from '../deps.ts'
 import { responseBody } from '../types/mod.d.ts'
 
 export const Logger: Middleware = async (ctx, next) => {

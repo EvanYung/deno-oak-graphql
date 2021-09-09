@@ -8,3 +8,5 @@ export { object, string, number, assert } from 'https://esm.sh/superstruct@0.15.
 export { default as ky, HTTPError } from 'https://esm.sh/ky@0.28.5'
 
 export { Buffer } from 'https://deno.land/std@0.106.0/io/buffer.ts'
+
+export * as colors from 'https://deno.land/std@0.106.0/fmt/colors.ts'
