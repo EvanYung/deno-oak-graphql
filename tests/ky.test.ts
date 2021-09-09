@@ -8,10 +8,11 @@ const { test } = Deno
 
 test('Test KY Fetch', async () => {
   try {
-    const parsed: responseBody = await KY.post('api/sendToken', {
-      json: { account: 'zltc_iZXRtZToqKXTvydkRmeWZEdW2g6mEBExk', amount: 100 }
+    const parsed: responseBody = await KY.get('getJoke', {
+      searchParams: { page: 1, count: 2, type: 'video' }
     }).json()
-    assertObjectMatch(parsed, { code: 0, message: '充值成功' })
+    console.log(parsed)
+    assertObjectMatch(parsed, { code: 200, message: '成功!' })
   } catch (err) {
     throw err.message
   }

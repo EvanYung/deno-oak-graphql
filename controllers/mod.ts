@@ -1,6 +1,6 @@
-import { helpers, RouterContext } from 'deps'
+import { helpers, RouterContext } from '../deps.ts'
 
-import { object, string, number, assert } from 'deps'
+import { object, string, number, assert } from '../deps.ts'
 
 import { responseBody } from '../types/mod.d.ts'
 

@@ -1,10 +1,10 @@
 // deno run --allow-net ky.ts
 
-import { ky, HTTPError } from 'deps'
+import { ky, HTTPError } from '../deps.ts'
 import { getErrorStatusMessage } from './mod.ts'
 
 const KY = ky.extend({
-  prefixUrl: 'http://localhost:8001/deno',
+  prefixUrl: 'https://api.apiopen.top',
   throwHttpErrors: false,
   timeout: 10000,
   retry: {
@@ -30,7 +30,7 @@ const KY = ky.extend({
       },
       async (_request, _options, response) => {
         const { code, message } = await response.json()
-        if (code !== 0) {
+        if (code !== 200) {
           const error = new HTTPError(response, _request, _options)
           error.message = message
           Object.assign(error, { code })

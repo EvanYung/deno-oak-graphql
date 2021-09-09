@@ -1,6 +1,6 @@
-import { Application, Router } from 'oak'
-import chalkin from 'chalkin'
-import logger from 'logger'
+import { Application, Router } from './deps.ts'
+import { chalkin } from './deps.ts'
+import { logger } from './deps.ts'
 
 import { Static, ErrorCatcher } from './middlewares/mod.ts'
 
@@ -31,4 +31,4 @@ router.use(routerApi.routes())
 
 app.use(router.routes()).use(router.allowedMethods())
 
-await app.listen({ port: 8001 })
+await app.listen({ hostname: '127.0.0.1' ,port: 8001 })

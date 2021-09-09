@@ -1,4 +1,4 @@
-import { Router } from 'deps'
+import { Router } from '../deps.ts'
 const router = new Router()
 
 import * as apiList from '../controllers/mod.ts'

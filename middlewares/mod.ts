@@ -1,5 +1,5 @@
-import { Middleware, send } from 'deps'
-import { chalkin } from 'deps'
+import { Middleware, send } from '../deps.ts'
+import { chalkin } from '../deps.ts'
 import { responseBody } from '../types/mod.d.ts'
 
 export const Logger: Middleware = async (ctx, next) => {
