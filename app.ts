@@ -3,6 +3,8 @@ import { logger } from './deps.ts'
 
 import { Static, ErrorCatcher } from './middlewares/mod.ts'
 
+import { GraphQLService } from './graphql.ts'
+
 import routerApi from './router/mod.ts'
 
 const app = new Application()
@@ -24,6 +26,8 @@ app.use(Static)
 app.use(ErrorCatcher)
 
 router.use(routerApi.routes())
+
+app.use(GraphQLService.routes(), GraphQLService.allowedMethods())
 
 app.use(router.routes()).use(router.allowedMethods())
 
