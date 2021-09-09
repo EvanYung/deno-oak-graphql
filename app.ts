@@ -6,7 +6,7 @@ import { Static, ErrorCatcher } from './middlewares/mod.ts'
 import routerApi from './router/mod.ts'
 
 const app = new Application()
-const router = new Router({ prefix: '/deno' })
+export const router = new Router({ prefix: '/deno' })
 
 app.addEventListener('error', (evt) => {
   // Will log the thrown error to the console.
