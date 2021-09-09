@@ -8,7 +8,9 @@ export const Logger: Middleware = async (ctx, next) => {
   const { method, url } = ctx.request
   const { status } = ctx.response
   const color = status === 200 ? 'green' : 'red'
-  console.log(`${colors.green(method)} ${colors[color](status as unknown as string)} ${url} - ${colors.blue(rt)}`)
+  console.log(
+    `${colors.bold(colors.green(method))} ${colors[color](status as unknown as string)} ${url} - ${colors.blue(rt)}`
+  )
 }
 
 export const Timing: Middleware = async (ctx, next) => {
