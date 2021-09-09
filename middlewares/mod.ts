@@ -1,15 +1,15 @@
 import { Middleware, send } from '../deps.ts'
-import { chalkin } from '../deps.ts'
+// import { chalkin } from '../deps.ts'
 import { responseBody } from '../types/mod.d.ts'
 
-export const Logger: Middleware = async (ctx, next) => {
-  await next()
-  const rt = ctx.response.headers.get('X-Response-Time')
-  const { method, url } = ctx.request
-  const { status } = ctx.response
-  const color = status === 200 ? 'green' : 'red'
-  console.log(`${chalkin.bold.green(method)} ${chalkin[color](status)} ${url} - ${chalkin.blue(rt)}`)
-}
+// export const Logger: Middleware = async (ctx, next) => {
+//   await next()
+//   const rt = ctx.response.headers.get('X-Response-Time')
+//   const { method, url } = ctx.request
+//   const { status } = ctx.response
+//   const color = status === 200 ? 'green' : 'red'
+//   console.log(`${chalkin.bold.green(method)} ${chalkin[color](status)} ${url} - ${chalkin.blue(rt)}`)
+// }
 
 export const Timing: Middleware = async (ctx, next) => {
   const start = Date.now()
