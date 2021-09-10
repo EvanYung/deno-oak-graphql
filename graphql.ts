@@ -34,7 +34,7 @@ const resolvers = {
         throw new GQLError({ type: 'auth error in context' })
       }
       return {
-        firstName: 'wooseok',
+        firstName: `wooseok-${id}`,
         lastName: 'lee'
       }
     }
