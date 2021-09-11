@@ -1,0 +1,26 @@
+type User {
+  id: ID
+  firstName: String
+  lastName: String
+}
+
+input UserInput {
+  id: ID
+  firstName: String!
+  lastName: String!
+}
+
+type ResolveType {
+  id: ID
+  done: Boolean
+}
+
+type Query {
+  "获取用户信息"
+  getUser(id: ID!): User
+}
+
+type Mutation {
+  "新增或编辑用户"
+  setUser(input: UserInput!): ResolveType
+}

@@ -1,6 +1,6 @@
 import app from './app.ts'
 import { colors } from './deps.ts'
-import { GraphQLService } from './graphql.ts'
+import { GraphQLService } from './graphql/mod.ts'
 
 app.addEventListener('listen', ({ hostname, port, secure }) => {
   console.log(`Listening on: ${colors.green(`${secure ? 'https://' : 'http://'}${hostname ?? 'localhost'}:${port}`)}`)

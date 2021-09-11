@@ -1,7 +1,8 @@
 {
   "deno.suggest.imports.hosts": {
     "https://deno.land": false,
-    "https://esm.sh": false
+    "https://esm.sh": false,
+    "https://cdn.skypack.dev": false
   },
   "deno.enable": true,
   "deno.lint": true,
