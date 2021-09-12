@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "server": "deno run -A --watch --unstable --location=http://127.0.0.1:8001 server.ts"
+    "server": "deno run -A --watch --unstable --import-map=import_map.json server.ts"
   },
   "files": ["./server.ts"]
 }

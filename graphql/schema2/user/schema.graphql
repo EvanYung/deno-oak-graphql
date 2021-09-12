@@ -1,7 +1,7 @@
 type User {
-  id: ID
-  firstName: String
-  lastName: String
+  id: ID!
+  firstName: String!
+  lastName: String!
 }
 
 input UserInput {
@@ -10,17 +10,17 @@ input UserInput {
   lastName: String!
 }
 
-type ResolveType {
-  id: ID
-  done: Boolean
+type UserResolve {
+  id: ID!
+  done: Boolean!
 }
 
 type Query {
   "获取用户信息"
-  getUser(id: ID!): User
+  getUser(id: ID!): User!
 }
 
 type Mutation {
   "新增或编辑用户"
-  setUser(input: UserInput!): ResolveType
+  setUser(input: UserInput!): UserResolve!
 }

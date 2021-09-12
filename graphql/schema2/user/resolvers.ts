@@ -1,5 +1,5 @@
 // deno-lint-ignore-file
-import { GQLError } from '../../../deps.ts'
+import { GQLError } from 'deps'
 export const resolvers = {
   Query: {
     getUser: (_parent: any, { id }: any, context: any, _info: any) => {

@@ -1,13 +1,12 @@
-import { applyGraphQL } from '../deps.ts'
+import { applyGraphQL } from '../middlewares/applyGraphQL.ts'
 import { Router, RouterContext } from '../deps.ts'
-import { types, resolvers } from './schema/user/mod.ts'
-
+import schema from './schema/mod.ts'
+// import context from '../context/mod.ts'
 export const GraphQLService = await applyGraphQL<Router>({
   Router,
-  typeDefs: [types],
-  resolvers: [resolvers],
+  schema,
   context: (_ctx: RouterContext) => {
     // console.log(ctx.request.headers)
-    return { user: 'Aaron2' }
+    // return context
   }
 })
