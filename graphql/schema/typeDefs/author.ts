@@ -41,28 +41,26 @@ const author = new GraphQLObjectType({
     quotes: {
       type: quoteConnection,
       args: {
-        first: {
+        size: {
           defaultValue: 10,
           description: 'Limits the number of results returned in the page. Defaults to 10.',
           type: GraphQLInt
         },
-        after: {
-          defaultValue: 'Y3Vyc29yMA==', // base64encode('cursor0')
+        page: {
+          defaultValue: 0,
           description: 'The cursor value of an item returned in previous page. An alternative to in integer offset.',
-          type: GraphQLString
+          type: GraphQLInt
         },
         query: {
           type: GraphQLString
         }
       },
       resolve: async (obj: Author, args: any, context: Context): Promise<any> => {
-        const after =
-          typeof args.after === 'undefined' || args.after === null
-            ? 0
-            : parseInt(BufferNode.from(args.after, 'base64').toString().replace('cursor', ''), 10)
+        const page = Math.max(args.page || 1, 1) - 1
+
         const quotes = await context.repositories.quote.find({
-          first: args.first,
-          after,
+          size: args.size,
+          page,
           authorId: obj.id,
           query: args.query
         })
@@ -70,8 +68,8 @@ const author = new GraphQLObjectType({
           authorId: obj.id,
           query: args.query
         })
-        const edges = nodesToEdges(quotes, after)
-        return toConnection(edges, quotesCount, edges.length === args.first, after > 0)
+        const edges = nodesToEdges(quotes, page)
+        return toConnection(edges, quotesCount)
       }
     },
     createdAt: {

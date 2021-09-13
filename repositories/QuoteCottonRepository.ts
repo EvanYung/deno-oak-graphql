@@ -2,6 +2,7 @@ import QuoteRepository, { FindParameters, CountParameters } from './QuoteReposit
 import database from '../database.ts'
 import { Quote } from 'types/schema.d.ts'
 import { Q } from 'deps'
+import { isNullOrUnDef } from 'utils/is.ts'
 
 export default class QuoteCottonRepository implements QuoteRepository {
   public async get(id: number): Promise<Quote> {
@@ -11,21 +12,21 @@ export default class QuoteCottonRepository implements QuoteRepository {
   }
 
   public async find(params: FindParameters): Promise<Quote[]> {
-    const { first, after, authorId, query } = params
+    const { size, page, authorId, query } = params
 
-    const queryBuilder = database.table('quote').limit(first)
-    if (typeof after !== 'undefined' && after !== null) {
-      queryBuilder.offset(after)
-    }
+    const queryBuilder = database.table('quote')
 
-    if (typeof authorId !== 'undefined' && authorId !== null) {
+    if (!isNullOrUnDef(authorId)) {
       queryBuilder.where('authorId', authorId)
     }
 
-    if (typeof query !== 'undefined' && query !== null) {
+    if (!isNullOrUnDef(query)) {
       queryBuilder.where('text', Q.like(`%${query}%`))
     }
-    const quotes = (await queryBuilder.execute()) as unknown as Quote[]
+    const quotes = (await queryBuilder
+      .offset(page * size)
+      .limit(size)
+      .execute()) as unknown as Quote[]
     return quotes
   }
 
@@ -33,11 +34,11 @@ export default class QuoteCottonRepository implements QuoteRepository {
     const { authorId, query } = params
     const queryBuilder = database.table('quote').count('id', 'count')
 
-    if (typeof authorId !== 'undefined' && authorId !== null) {
+    if (!isNullOrUnDef(authorId)) {
       queryBuilder.where('authorId', authorId)
     }
 
-    if (typeof query !== 'undefined' && query !== null) {
+    if (!isNullOrUnDef(query)) {
       queryBuilder.where('text', Q.like(`%${query}%`))
     }
 

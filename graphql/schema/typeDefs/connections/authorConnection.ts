@@ -1,5 +1,4 @@
 import { GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLObjectType } from 'deps'
-import pageInfo from '../pageInfo.ts'
 import authorEdge from '../edges/authorEdge.ts'
 
 const authorConnection = new GraphQLObjectType({
@@ -12,9 +11,6 @@ const authorConnection = new GraphQLObjectType({
     edges: {
       description: 'A list of edges.',
       type: new GraphQLList(authorEdge)
-    },
-    pageInfo: {
-      type: GraphQLNonNull(pageInfo)
     }
   }
 })

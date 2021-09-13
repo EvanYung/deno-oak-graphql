@@ -1,13 +1,7 @@
 // deno-lint-ignore no-explicit-any
-export default (edges: any[], totalCount: number, hasNextPage: boolean, hasPreviousPage: boolean) => {
+export default (edges: any[], totalCount: number) => {
   return {
     edges,
-    pageInfo: {
-      endCursor: edges.length === 0 ? null : edges[edges.length - 1].cursor,
-      hasNextPage,
-      hasPreviousPage,
-      startCursor: edges.length === 0 ? null : edges[0].cursor
-    },
     totalCount
   }
 }

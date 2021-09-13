@@ -1,6 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
 import { GraphQLInt, GraphQLString, GraphQLList } from 'deps'
-import { BufferNode } from 'deps'
 import type Context from 'context/Context.ts'
 import authorConnection from '../typeDefs/connections/authorConnection.ts'
 import authorsOrder from '../typeDefs/inputs/authorsOrder.ts'
@@ -8,8 +7,8 @@ import nodesToEdges from './nodesToEdges.ts'
 import toConnection from './toConnection.ts'
 
 interface AuthorsQueryArguments {
-  first: number
-  after: string
+  size: number
+  page: number
   firstName: string
   lastName: string
   orderBy: any[]
@@ -18,15 +17,15 @@ interface AuthorsQueryArguments {
 export default {
   type: authorConnection,
   args: {
-    first: {
+    size: {
       defaultValue: 10,
       description: 'Limits the number of results returned in the page. Defaults to 10.',
       type: GraphQLInt
     },
-    after: {
-      defaultValue: 'Y3Vyc29yMA==', // base64encode('cursor0')
+    page: {
+      defaultValue: 0,
       description: 'The cursor value of an item returned in previous page. An alternative to in integer offset.',
-      type: GraphQLString
+      type: GraphQLInt
     },
     firstName: {
       type: GraphQLString
@@ -39,13 +38,12 @@ export default {
     }
   },
   resolve: async (_: any, args: AuthorsQueryArguments, context: Context) => {
-    const after =
-      typeof args.after === 'undefined' || args.after === null
-        ? 0
-        : parseInt(BufferNode.from(args.after, 'base64').toString('ascii').replace('cursor', ''), 10)
+    const page = Math.max(args.page || 1, 1) - 1
+    const size = args.size
+
     const authors = await context.repositories.author.find({
-      first: args.first,
-      after,
+      size,
+      page,
       firstName: args.firstName,
       lastName: args.lastName,
       orderBy: args.orderBy
@@ -54,7 +52,7 @@ export default {
       firstName: args.firstName,
       lastName: args.lastName
     })
-    const edges = nodesToEdges(authors, after)
-    return toConnection(edges, authorsCount, edges.length === args.first, after > 0)
+    const edges = nodesToEdges(authors, page * size)
+    return toConnection(edges, authorsCount)
   }
 }

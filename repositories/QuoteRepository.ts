@@ -1,8 +1,8 @@
 import { Quote } from 'types/schema.d.ts'
 
 export interface FindParameters {
-  first: number
-  after?: number
+  page: number
+  size: number
   authorId?: number
   query?: string
 }

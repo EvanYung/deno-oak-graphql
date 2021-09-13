@@ -3,6 +3,7 @@ import database from '../database.ts'
 import { Q, OrderDirection } from 'deps'
 import { IObj } from 'types/mod.d.ts'
 import { Author } from 'types/schema.d.ts'
+import { isNullOrUnDef } from 'utils/is.ts'
 
 export default class AuthorCottonRepository implements AuthorRepository {
   public async get(id: number): Promise<Author> {
@@ -17,26 +18,25 @@ export default class AuthorCottonRepository implements AuthorRepository {
   }
 
   public async find(params: FindParameters): Promise<Author[]> {
-    const { first, after, firstName, lastName, orderBy } = params
+    const { size, page, firstName, lastName, orderBy } = params
 
-    const queryBuilder = database.table('author').limit(first)
+    const queryBuilder = database.table('author').limit(size)
 
-    if (typeof after !== 'undefined' && after !== null) {
-      queryBuilder.offset(after)
-    }
-
-    if (typeof firstName !== 'undefined' && firstName !== null) {
+    if (!isNullOrUnDef(firstName)) {
       queryBuilder.where('firstName', Q.like(`%${firstName}%`))
     }
 
-    if (typeof lastName !== 'undefined' && lastName !== null) {
+    if (!isNullOrUnDef(lastName)) {
       queryBuilder.where('lastName', Q.like(`%${lastName}%`))
     }
 
     if (Array.isArray(orderBy)) {
       orderBy.forEach((ob) => queryBuilder.order(ob.field, ob.direction as OrderDirection))
     }
-    const authors = (await queryBuilder.execute()) as unknown as Author[]
+    const authors = (await queryBuilder
+      .offset(page * size)
+      .limit(size)
+      .execute()) as unknown as Author[]
     return authors
   }
 
@@ -45,11 +45,11 @@ export default class AuthorCottonRepository implements AuthorRepository {
 
     const queryBuilder = database.table('author').count('id', 'count')
 
-    if (typeof firstName !== 'undefined' && firstName !== null) {
+    if (!isNullOrUnDef(firstName)) {
       queryBuilder.where('firstName', Q.like(`%${firstName}%`))
     }
 
-    if (typeof lastName !== 'undefined' && lastName !== null) {
+    if (!isNullOrUnDef(lastName)) {
       queryBuilder.where('lastName', Q.like(`%${lastName}%`))
     }
     const ret = (await queryBuilder.first().execute()) as unknown as { count: number }[]

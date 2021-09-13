@@ -1,8 +1,7 @@
 // deno-lint-ignore-file no-explicit-any
-import { BufferNode } from 'deps'
-export default (nodes: any[], after: number) => {
+export default (nodes: any[], num: number) => {
   return nodes.map((node, index: number) => ({
-    cursor: BufferNode.from(`cursor${index + after + 1}`).toString('base64'),
+    cursor: index + num + 1,
     node
   }))
 }

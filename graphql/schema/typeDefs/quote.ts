@@ -1,9 +1,9 @@
-// deno-lint-ignore-file
 import { GraphQLID, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'deps'
 import author from './author.ts'
 import Context from 'context/Context.ts'
 import { datetime, BufferNode } from 'deps'
 import { Quote, Author } from 'types/schema.d.ts'
+import { IObj } from 'types/mod.d.ts'
 
 const quote = new GraphQLObjectType({
   name: 'Quote',
@@ -32,7 +32,7 @@ const quote = new GraphQLObjectType({
     author: {
       type: author,
       description: 'Author of the quote',
-      resolve: (obj: Quote, args: any, context: Context): Promise<Author> => {
+      resolve: (obj: Quote, _args: IObj, context: Context): Promise<Author> => {
         return context.loaders.author.load(obj.authorId)
       }
     },
@@ -40,7 +40,7 @@ const quote = new GraphQLObjectType({
       type: GraphQLNonNull(GraphQLString),
       description: '',
       resolve: (obj: Quote): string => {
-        return datetime.format(new Date(obj.createdAt), 'yyyy-MM-dd HH:mm')
+        return datetime.format(new Date(obj.createdAt), 'yyyy-MM-dd HH:mm:ss')
       }
     }
   })

@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLString } from 'deps'
+import { GraphQLObjectType, GraphQLInt } from 'deps'
 import author from '../author.ts'
 
 const authorEdge = new GraphQLObjectType({
@@ -11,7 +11,7 @@ const authorEdge = new GraphQLObjectType({
     },
     cursor: {
       description: 'A cursor for pagination.',
-      type: GraphQLString
+      type: GraphQLInt
     }
   }
 })

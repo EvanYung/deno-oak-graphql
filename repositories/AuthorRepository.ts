@@ -6,8 +6,8 @@ export interface CreateParameters {
 }
 
 export interface FindParameters {
-  first: number
-  after?: number
+  page: number
+  size: number
   firstName?: string
   lastName?: string
   orderBy?: OrderBy[]
