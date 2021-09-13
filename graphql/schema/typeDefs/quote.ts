@@ -3,7 +3,7 @@ import { GraphQLID, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'dep
 import author from './author.ts'
 import Context from 'context/Context.ts'
 import { datetime, BufferNode } from 'deps'
-import { Quote, Author } from '../../types/mod.d.ts'
+import { Quote, Author } from 'types/schema.d.ts'
 
 const quote = new GraphQLObjectType({
   name: 'Quote',

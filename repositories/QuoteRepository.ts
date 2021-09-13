@@ -1,4 +1,4 @@
-import { Quote } from '../graphql/types/mod.d.ts'
+import { Quote } from 'types/schema.d.ts'
 
 export interface FindParameters {
   first: number

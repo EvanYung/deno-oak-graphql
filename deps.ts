@@ -1,6 +1,8 @@
 export { Application, Router, helpers, send } from 'https://deno.land/x/oak@v9.0.0/mod.ts'
 export type { RouterContext, Middleware } from 'https://deno.land/x/oak@v9.0.0/mod.ts'
 
+export { config } from 'https://deno.land/x/dotenv@v3.0.0/mod.ts'
+
 export { default as logger } from 'https://deno.land/x/oak_logger@1.0.0/mod.ts'
 
 export { object, string, number, assert } from 'https://cdn.skypack.dev/superstruct@0.15.2?dts'
@@ -32,3 +34,9 @@ export {
   GraphQLInputObjectType,
   GraphQLSchema
 } from 'https://cdn.pika.dev/graphql@15.0.0'
+
+export { default as DataLoader } from 'https://cdn.skypack.dev/dataloader?dts'
+export type { BatchLoadFn } from 'https://cdn.skypack.dev/dataloader?dts'
+
+export { connect, Q, Schema } from 'https://deno.land/x/cotton@v0.7.5/mod.ts'
+export type { OrderDirection } from 'https://deno.land/x/cotton@v0.7.5/src/querybuilder.ts'

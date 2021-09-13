@@ -1,6 +1,6 @@
-import DataLoader, { BatchLoadFn } from 'https://cdn.skypack.dev/dataloader?dts'
-import AuthorRepository from '../repositories/AuthorKnexRepository.ts'
-import { Author } from '../graphql/types/mod.d.ts'
+import { DataLoader, BatchLoadFn } from 'deps'
+import AuthorRepository from '../repositories/AuthorCottonRepository.ts'
+import { Author } from 'types/schema.d.ts'
 
 async function getAuthorsById(ids: number[]): Promise<Author[]> {
   const authorRepository = new AuthorRepository()

@@ -1,25 +1,15 @@
-import { path } from 'deps'
+import { config } from 'deps'
 
-const __dirname = path.dirname(path.fromFileUrl(import.meta.url))
-export default {
-  port: 3010,
-  database: {
-    type: 'mysql',
-    connection: {
-      host: '127.0.0.1',
-      port: 3306,
-      database: 'test',
-      user: 'user',
-      password: 'password'
-    },
-    migrations: {
-      directory: __dirname + '/migrations'
-    },
-    seeds: {
-      directory: __dirname + '/seeds'
-    }
-  },
-  defaultQuery: `
+const env = config()
 
-  `
+export const port = Number(env.PORT)
+
+export const db = {
+  // deno-lint-ignore no-explicit-any
+  type: env.DB_TYPE as any,
+  port: Number(env.DB_PORT),
+  database: env.DB_DATABASE,
+  hostname: env.DB_HOSTNAME,
+  username: env.DB_USERNAME,
+  password: env.DB_PASSWORD
 }

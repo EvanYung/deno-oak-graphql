@@ -1,10 +1,6 @@
-import { knex } from 'https://esm.sh/knex'
-import config from './config.ts'
+import { connect } from 'deps'
+import { db } from './config.ts'
 
-const database = knex({
-  client: 'mysql2',
-  ...config.database,
-  pool: { min: 0, max: 7 }
-})
+const database = await connect(db)
 
 export default database

@@ -6,8 +6,8 @@ export default (edges: any[], totalCount: number, hasNextPage: boolean, hasPrevi
       endCursor: edges.length === 0 ? null : edges[edges.length - 1].cursor,
       hasNextPage,
       hasPreviousPage,
-      startCursor: edges.length === 0 ? null : edges[0].cursor,
+      startCursor: edges.length === 0 ? null : edges[0].cursor
     },
-    totalCount,
-  };
-};
+    totalCount
+  }
+}

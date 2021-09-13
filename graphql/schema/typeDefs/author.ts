@@ -5,7 +5,7 @@ import type Context from 'context/Context.ts'
 import quoteConnection from './connections/quoteConnection.ts'
 import nodesToEdges from '../queries/nodesToEdges.ts'
 import toConnection from '../queries/toConnection.ts'
-import { Author } from '../../types/mod.d.ts'
+import { Author } from 'types/schema.d.ts'
 
 const author = new GraphQLObjectType({
   name: 'Author',
@@ -59,7 +59,7 @@ const author = new GraphQLObjectType({
         const after =
           typeof args.after === 'undefined' || args.after === null
             ? 0
-            : parseInt(BufferNode.from(args.after, 'base64').toString('ascii').replace('cursor', ''), 10)
+            : parseInt(BufferNode.from(args.after, 'base64').toString().replace('cursor', ''), 10)
         const quotes = await context.repositories.quote.find({
           first: args.first,
           after,

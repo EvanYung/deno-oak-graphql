@@ -1,4 +1,4 @@
-import { Author, OrderBy } from '../graphql/types/mod.d.ts'
+import { Author, OrderBy } from 'types/schema.d.ts'
 
 export interface CreateParameters {
   firstName: string

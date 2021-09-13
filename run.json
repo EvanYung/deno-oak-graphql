@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "server": "deno run -A --watch --unstable --import-map=import_map.json server.ts"
+    "server": "deno run -A --watch --unstable --import-map=import_map.json server.ts",
+    "seed": "deno run -A --import-map=import_map.json seeds/init.ts"
   },
   "files": ["./server.ts"]
 }

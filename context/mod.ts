@@ -1,6 +1,6 @@
 import Context from './Context.ts'
-import AuthorRepository from '../repositories/AuthorKnexRepository.ts'
-import QuoteRepository from '../repositories/QuoteKnexRepository.ts'
+import AuthorRepository from '../repositories/AuthorCottonRepository.ts'
+import QuoteRepository from '../repositories/QuoteCottonRepository.ts'
 import authorLoader from '../loaders/authorLoader.ts'
 
 const context: Context = {
