@@ -1,3 +1,4 @@
+import { IObj, Fn, Nullable } from 'types/mod.d.ts'
 export const getErrorStatusMessage = (status: number) => {
   let message
   switch (status) {
@@ -39,4 +40,12 @@ export const getErrorStatusMessage = (status: number) => {
   }
 
   return message
+}
+
+export const omitPlus = (obj: IObj, path: Nullable<string | string[]>, predicate?: Fn) => {
+  const ret: IObj = {}
+  for (const [k, v] of Object.entries(obj)) {
+    !([path].flat().includes(k) || (predicate && predicate(v))) && (ret[k] = v)
+  }
+  return ret
 }

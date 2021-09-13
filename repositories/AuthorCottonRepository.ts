@@ -3,7 +3,8 @@ import database from '../database.ts'
 import { Q, OrderDirection } from 'deps'
 import { IObj } from 'types/mod.d.ts'
 import { Author } from 'types/schema.d.ts'
-import { isNullOrUnDef } from 'utils/is.ts'
+import { isNullOrUnDef, isUnDef } from 'utils/is.ts'
+import { omitPlus } from 'utils/mod.ts'
 
 export default class AuthorCottonRepository implements AuthorRepository {
   public async get(id: number): Promise<Author> {
@@ -74,13 +75,15 @@ export default class AuthorCottonRepository implements AuthorRepository {
   }
 
   public async update(params: CreateParameters & { id: number }): Promise<Author> {
-    const { id, firstName, lastName } = params
+    const { id } = params
 
     const queryBuilder = database.table('author').where('id', id)
 
-    queryBuilder.update({ firstName, lastName })
+    const queryUpdate = omitPlus(params, 'id', isUnDef)
 
-    const updatedRows: IObj = await queryBuilder.execute()
+    queryBuilder.update(queryUpdate)
+
+    const updatedRows: IObj[] = await queryBuilder.execute()
     console.log(updatedRows)
 
     if (updatedRows.length === 0) {
