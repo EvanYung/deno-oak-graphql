@@ -25,7 +25,7 @@ export default interface AuthorRepository {
 
   create(params: CreateParameters): Promise<Author>
 
-  update(id: number, firstName: string, lastName: string): Promise<Author>
+  update(params: CreateParameters & { id: number }): Promise<Author>
 
   find(params: FindParameters): Promise<Author[]>
 

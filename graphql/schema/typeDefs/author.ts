@@ -76,7 +76,7 @@ const author = new GraphQLObjectType({
       type: GraphQLNonNull(GraphQLString),
       description: '',
       resolve: (obj: Author): string => {
-        return datetime.format(new Date(obj.createdAt), 'yyyy-MM-dd HH:mm')
+        return datetime.format(new Date(obj.createdAt), 'yyyy-MM-dd HH:mm:ss')
       }
     }
   })

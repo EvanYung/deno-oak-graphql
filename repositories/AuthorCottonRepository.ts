@@ -58,27 +58,31 @@ export default class AuthorCottonRepository implements AuthorRepository {
   }
 
   public async create(params: CreateParameters): Promise<Author> {
+    const { firstName, lastName } = params
+
     const ids = (await database
       .table('author')
       .insert({
-        firstName: params.firstName,
-        lastName: params.lastName
+        firstName,
+        lastName
       })
       .execute()) as unknown as number[]
+
     const author = await this.get(ids[0])
+
     return author
   }
 
-  public async update(id: number, firstName: string, lastName: string): Promise<Author> {
-    const queryBuilder = database.table('author').where('id', id)
-    if (typeof firstName !== 'undefined' && firstName !== null) {
-      queryBuilder.update({ firstName: firstName })
-    }
+  public async update(params: CreateParameters & { id: number }): Promise<Author> {
+    const { id, firstName, lastName } = params
 
-    if (typeof lastName !== 'undefined' && lastName !== null) {
-      queryBuilder.update({ lastName: lastName })
-    }
+    const queryBuilder = database.table('author').where('id', id)
+
+    queryBuilder.update({ firstName, lastName })
+
     const updatedRows: IObj = await queryBuilder.execute()
+    console.log(updatedRows)
+
     if (updatedRows.length === 0) {
       throw new Error('Author not found!')
     }

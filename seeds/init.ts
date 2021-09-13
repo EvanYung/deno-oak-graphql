@@ -1,6 +1,6 @@
 import { Schema } from 'deps'
 import database from '../database.ts'
-
+import { datetime } from 'deps'
 const schema = new Schema(database)
 await database.transaction(async () => {
   // 删除表
@@ -13,14 +13,16 @@ await database.transaction(async () => {
     table.id()
     table.varchar('firstName')
     table.varchar('lastName')
-    table.datetime('createdAt')
+    table.datetime('createdAt').default(datetime.format(new Date(), 'yyyy-MM-dd HH:mm:ss'))
+    table.timestamps()
   })
 
   await schema.createTable('quote', (table) => {
     table.id()
     table.integer('authorId')
     table.text('text')
-    table.datetime('createdAt')
+    table.datetime('createdAt').default(datetime.format(new Date(), 'yyyy-MM-dd HH:mm:ss'))
+    table.timestamps()
   })
 
   // 初始化填充数据
@@ -128,5 +130,4 @@ await database.transaction(async () => {
       }
     ])
     .execute()
-  // await database.disconnect()
 })
