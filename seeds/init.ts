@@ -1,6 +1,6 @@
-import { Schema } from 'deps'
+import { Schema } from '../deps.ts'
 import database from '../database.ts'
-import { datetime } from 'deps'
+import { datetime } from '../deps.ts'
 const schema = new Schema(database)
 await database.transaction(async () => {
   // 删除表
@@ -131,3 +131,5 @@ await database.transaction(async () => {
     ])
     .execute()
 })
+
+await database.disconnect()

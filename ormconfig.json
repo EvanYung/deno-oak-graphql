@@ -1,0 +1,1 @@
+{"type":"mysql","port":3306,"database":"deno_oak","hostname":"127.0.0.1","username":"root","password":"evan1993"}

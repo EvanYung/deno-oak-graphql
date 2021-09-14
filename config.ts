@@ -1,4 +1,4 @@
-import { config } from 'deps'
+import { config } from './deps.ts'
 
 const env = config()
 

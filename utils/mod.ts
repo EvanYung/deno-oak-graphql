@@ -1,4 +1,4 @@
-import { IObj, Fn, Nullable } from 'types/mod.d.ts'
+import { IObj, Fn, Nullable } from '../types/mod.d.ts'
 export const getErrorStatusMessage = (status: number) => {
   let message
   switch (status) {
@@ -48,4 +48,12 @@ export const omitPlus = (obj: IObj, path: Nullable<string | string[]>, predicate
     !([path].flat().includes(k) || (predicate && predicate(v))) && (ret[k] = v)
   }
   return ret
+}
+
+export function writeJson(path: string, data: IObj) {
+  try {
+    Deno.writeTextFileSync(path, JSON.stringify(data))
+  } catch (e) {
+    return e.message
+  }
 }
