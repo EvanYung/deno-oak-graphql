@@ -98,7 +98,7 @@ export default class AuthorCottonRepository implements AuthorRepository {
       throw new Error('Author not found!')
     }
 
-    const author = (await authorModel?.remove()) as unknown as Author
+    const author = (await authorModel.remove()) as unknown as Author
 
     return author
   }
