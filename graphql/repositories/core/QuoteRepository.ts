@@ -1,6 +1,6 @@
-import QuoteRepository, { FindParameters, CountParameters } from '../types/quote.d.ts'
-import type { Quote } from 'types/schema.d.ts'
 import { Q } from 'deps'
+import type { Quote } from 'types/schema.d.ts'
+import QuoteRepository, { FindParameters, CountParameters } from '../types/quote.d.ts'
 import { isNullOrUnDef } from 'utils/is.ts'
 import QuoteModel from '../models/Quote.ts'
 
