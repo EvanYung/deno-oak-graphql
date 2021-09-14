@@ -29,4 +29,4 @@ app.addEventListener('listen', ({ hostname, port, secure }) => {
 // graphql
 app.use(GraphQLService.routes(), GraphQLService.allowedMethods())
 
-await app.listen({ hostname: '127.0.0.1', port })
+await app.listen({ port })
