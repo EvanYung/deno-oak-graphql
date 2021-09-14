@@ -1,9 +1,9 @@
 // deno-lint-ignore-file no-explicit-any
 import { GraphQLInt, GraphQLString } from 'deps'
-import type Context from 'context/Context.ts'
+import type Context from '../../context/Context.ts'
 import quoteConnection from '../typeDefs/connections/quoteConnection.ts'
-import nodesToEdges from './nodesToEdges.ts'
-import toConnection from './toConnection.ts'
+import nodesToEdges from './tools/nodesToEdges.ts'
+import toConnection from './tools/toConnection.ts'
 
 interface QuotesQueryArguments {
   size: number

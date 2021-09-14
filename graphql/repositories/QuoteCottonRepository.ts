@@ -1,6 +1,6 @@
 import QuoteRepository, { FindParameters, CountParameters } from './QuoteRepository.ts'
-import database from '../database.ts'
-import { Quote } from 'types/schema.d.ts'
+import database from '../../database.ts'
+import type { Quote } from 'types/schema.d.ts'
 import { Q } from 'deps'
 import { isNullOrUnDef } from 'utils/is.ts'
 

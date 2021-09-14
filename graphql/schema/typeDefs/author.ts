@@ -1,10 +1,10 @@
 // deno-lint-ignore-file no-explicit-any
 import { GraphQLID, GraphQLNonNull, GraphQLObjectType, GraphQLString, GraphQLInt } from 'deps'
 import { datetime, BufferNode } from 'deps'
-import type Context from 'context/Context.ts'
+import type Context from '../../context/Context.ts'
 import quoteConnection from './connections/quoteConnection.ts'
-import nodesToEdges from '../queries/nodesToEdges.ts'
-import toConnection from '../queries/toConnection.ts'
+import nodesToEdges from '../queries/tools/nodesToEdges.ts'
+import toConnection from '../queries/tools/toConnection.ts'
 import { Author } from 'types/schema.d.ts'
 
 const author = new GraphQLObjectType({

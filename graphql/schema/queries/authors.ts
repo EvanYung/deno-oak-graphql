@@ -1,10 +1,10 @@
 // deno-lint-ignore-file no-explicit-any
 import { GraphQLInt, GraphQLString, GraphQLList } from 'deps'
-import type Context from 'context/Context.ts'
+import type Context from '../../context/Context.ts'
 import authorConnection from '../typeDefs/connections/authorConnection.ts'
 import authorsOrder from '../typeDefs/inputs/authorsOrder.ts'
-import nodesToEdges from './nodesToEdges.ts'
-import toConnection from './toConnection.ts'
+import nodesToEdges from './tools/nodesToEdges.ts'
+import toConnection from './tools/toConnection.ts'
 
 interface AuthorsQueryArguments {
   size: number

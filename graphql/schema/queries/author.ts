@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import { GraphQLID, GraphQLNonNull } from 'deps'
-import type Context from 'context/Context.ts'
+import type Context from '../../context/Context.ts'
 import { default as authorType } from '../typeDefs/author.ts'
 
 const author = {

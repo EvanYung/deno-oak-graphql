@@ -1,4 +1,4 @@
-import { Quote } from 'types/schema.d.ts'
+import type { Quote } from 'types/schema.d.ts'
 
 export interface FindParameters {
   page: number

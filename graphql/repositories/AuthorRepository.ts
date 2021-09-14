@@ -1,4 +1,4 @@
-import { Author, OrderBy } from 'types/schema.d.ts'
+import type { Author, OrderBy } from 'types/schema.d.ts'
 
 export interface CreateParameters {
   firstName: string

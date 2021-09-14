@@ -1,4 +1,4 @@
-import { GraphQLSchema } from '../../deps.ts'
+import { GraphQLSchema } from 'deps'
 import mutation from './mutation.ts'
 import query from './query.ts'
 

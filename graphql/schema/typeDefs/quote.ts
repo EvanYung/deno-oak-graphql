@@ -1,9 +1,9 @@
 import { GraphQLID, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'deps'
+import type { IObj } from 'types/mod.d.ts'
 import author from './author.ts'
-import Context from 'context/Context.ts'
+import Context from '../../context/Context.ts'
 import { datetime, BufferNode } from 'deps'
 import { Quote, Author } from 'types/schema.d.ts'
-import { IObj } from 'types/mod.d.ts'
 
 const quote = new GraphQLObjectType({
   name: 'Quote',
