@@ -16,6 +16,8 @@ RUN deno cache deps.ts
 # These steps will be re-run upon each file change in your working directory:
 COPY . .
 # Compile the main app so that it doesn't need to be compiled each startup/entry.
-RUN deno cache server.ts
+RUN deno cache server.ts --import-map=import_map.json
 
-CMD ["run", "-A", "server.ts"]
+# RUN deno install -A --unstable --import-map=https://deno.land/x/trex/import_map.json -n trex --no-check https://deno.land/x/trex/cli.ts
+
+CMD ["run", "-A", "--watch", "--unstable", "--import-map=import_map.json", "--config", "./tsconfig.json", "server.ts"]
