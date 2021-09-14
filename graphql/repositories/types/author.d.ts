@@ -5,12 +5,12 @@ export interface CreateParameters {
   lastName: string
 }
 
-export interface FindParameters {
+export interface FindParameters<T = string> {
   page: number
   size: number
   firstName?: string
   lastName?: string
-  orderBy?: OrderBy[]
+  orderBy?: OrderBy<T>[]
 }
 
 export interface CountParameters {

@@ -40,7 +40,7 @@ export async function applyGraphQL<T>({
 }: ApplyGraphQLOptions<T>): Promise<T> {
   const router = new Router()
 
-  const _schema = schema || makeExecutableSchema({ typeDefs, resolvers })
+  schema = schema || makeExecutableSchema({ typeDefs, resolvers })
 
   await router.post(path, async (ctx: any) => {
     const { response, request } = ctx
@@ -49,7 +49,7 @@ export async function applyGraphQL<T>({
         const contextResult = context ? await context(ctx) : undefined
         const body = await request.body().value
         const result = await graphql(
-          _schema,
+          schema,
           body.query,
           resolvers,
           contextResult,

@@ -1,5 +1,5 @@
+import { Router, RouterContext } from 'deps'
 import { applyGraphQL } from '../middlewares/applyGraphQL.ts'
-import { Router, RouterContext } from '../deps.ts'
 import schema from './schema/mod.ts'
 import context from './context/mod.ts'
 export const GraphQLService = await applyGraphQL<Router>({

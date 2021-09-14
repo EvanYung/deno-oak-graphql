@@ -1,5 +1,5 @@
 import { DataLoader, BatchLoadFn } from 'deps'
-import AuthorRepository from '../repositories/AuthorCottonRepository.ts'
+import AuthorRepository from '../repositories/core/AuthorRepository.ts'
 import type { Author } from 'types/schema.d.ts'
 
 async function getAuthorsById(ids: number[]): Promise<Author[]> {

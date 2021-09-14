@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-explicit-any
 import { GraphQLID, GraphQLNonNull } from 'deps'
 import { default as quoteType } from '../typeDefs/quote.ts'
-import type Context from '../../context/Context.ts'
+import type Context from '../../context/types.d.ts'
 const quote = {
   type: quoteType,
   args: {

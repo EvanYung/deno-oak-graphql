@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import { GraphQLInt, GraphQLString } from 'deps'
-import type Context from '../../context/Context.ts'
+import type Context from '../../context/types.d.ts'
 import quoteConnection from '../typeDefs/connections/quoteConnection.ts'
 import nodesToEdges from './tools/nodesToEdges.ts'
 import toConnection from './tools/toConnection.ts'

@@ -4,7 +4,6 @@
     "dev_deps": "./dev_deps.ts",
     "config": "./config.ts",
     "utils/": "./utils/",
-    "types/": "./types/",
-    "context/": "./context/"
+    "types/": "./types/"
   }
 }

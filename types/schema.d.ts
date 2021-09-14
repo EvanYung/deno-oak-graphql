@@ -1,3 +1,4 @@
+import type { OrderDirection } from 'deps'
 export type Author = {
   id: number
   firstName: string
@@ -12,7 +13,7 @@ export type Quote = {
   createdAt: string
 }
 
-export type OrderBy = {
-  field: string
-  direction: string
+export type OrderBy<T = string> = {
+  field: T
+  direction: OrderDirection
 }

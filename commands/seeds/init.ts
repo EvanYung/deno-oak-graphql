@@ -1,31 +1,5 @@
-import { Schema } from '../deps.ts'
-import database from '../database.ts'
-import { datetime } from '../deps.ts'
-const schema = new Schema(database)
+import database from '../../graphql/repositories/mod.ts'
 await database.transaction(async () => {
-  // 删除表
-  try {
-    await schema.dropTable(['author', 'quote'])
-    // deno-lint-ignore no-empty
-  } catch (_err) {}
-  // 创建表
-  await schema.createTable('author', (table) => {
-    table.id()
-    table.varchar('firstName')
-    table.varchar('lastName')
-    table.datetime('createdAt').default(datetime.format(new Date(), 'yyyy-MM-dd HH:mm:ss'))
-    table.timestamps()
-  })
-
-  await schema.createTable('quote', (table) => {
-    table.id()
-    table.integer('authorId')
-    table.text('text')
-    table.datetime('createdAt').default(datetime.format(new Date(), 'yyyy-MM-dd HH:mm:ss'))
-    table.timestamps()
-  })
-
-  // 初始化填充数据
   await database
     .table('author')
     .insert([

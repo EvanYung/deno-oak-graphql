@@ -1,6 +1,6 @@
-import { DataLoader } from 'deps'
-import AuthorRepository from '../repositories/AuthorRepository.ts'
-import QuoteRepository from '../repositories/QuoteRepository.ts'
+import type { DataLoader } from 'deps'
+import type AuthorRepository from '../repositories/types/author.d.ts'
+import type QuoteRepository from '../repositories/types/quote.d.ts'
 import type { Author } from 'types/schema.d.ts'
 
 interface RepositoriesContext {

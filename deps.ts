@@ -38,5 +38,5 @@ export {
 export { default as DataLoader } from 'https://cdn.skypack.dev/dataloader?dts'
 export type { BatchLoadFn } from 'https://cdn.skypack.dev/dataloader?dts'
 
-export { connect, Q, Schema } from 'https://deno.land/x/cotton@v0.7.5/mod.ts'
+export { connect, Q, Schema, Primary, Model, Column, BaseModel } from 'https://deno.land/x/cotton@v0.7.5/mod.ts'
 export type { OrderDirection } from 'https://deno.land/x/cotton@v0.7.5/src/querybuilder.ts'
