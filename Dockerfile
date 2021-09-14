@@ -18,6 +18,4 @@ COPY . .
 # Compile the main app so that it doesn't need to be compiled each startup/entry.
 RUN deno cache server.ts --import-map=import_map.json
 
-# RUN deno install -A --unstable --import-map=https://deno.land/x/trex/import_map.json -n trex --no-check https://deno.land/x/trex/cli.ts
-
-CMD ["run", "-A", "--watch", "--unstable", "--import-map=import_map.json", "--config", "./tsconfig.json", "server.ts"]
+CMD ["run", "-A", "--import-map=import_map.json", "--config", "./tsconfig.json", "server.ts"]
