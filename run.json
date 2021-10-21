@@ -1,11 +1,7 @@
 {
   "scripts": {
     "server": "deno run -A --watch --unstable --import-map=import_map.json --config ./tsconfig.json server.ts",
-    "seeds": "deno run -A --import-map=import_map.json --config ./tsconfig.json commands/seeds/init.ts",
-    "orm": "deno run -A commands/orm/init.ts",
-    "migration": "cotton migration:create",
-    "migration:up": "cotton migration:up",
-    "migration:down": "cotton migration:down"
+    "seeds": "deno run -A --import-map=import_map.json --config ./tsconfig.json commands/seeds/init.ts"
   },
   "files": ["./server.ts"]
 }

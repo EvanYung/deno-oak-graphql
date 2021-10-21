@@ -1,18 +1,11 @@
-import type { DataLoader } from 'deps'
-import type AuthorRepository from '../repositories/types/author.d.ts'
-import type QuoteRepository from '../repositories/types/quote.d.ts'
-import type { Author } from 'types/schema.d.ts'
+import type AuthorDB from '../db/types/author.d.ts'
+import type QuoteDB from '../db/types/quote.d.ts'
 
-interface RepositoriesContext {
-  author: AuthorRepository
-  quote: QuoteRepository
-}
-
-interface LoadersContext {
-  author: DataLoader<number, Author>
+interface DBContext {
+  author: AuthorDB
+  quote: QuoteDB
 }
 
 export default interface Context {
-  repositories: RepositoriesContext
-  loaders: LoadersContext
+  db: DBContext
 }

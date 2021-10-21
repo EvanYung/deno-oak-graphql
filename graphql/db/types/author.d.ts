@@ -18,10 +18,8 @@ export interface CountParameters {
   lastName?: string
 }
 
-export default interface AuthorRepository {
+export default interface AuthorDB {
   get(id: number): Promise<Author>
-
-  getMany(ids: number[]): Promise<Author[]>
 
   create(params: CreateParameters): Promise<Author>
 

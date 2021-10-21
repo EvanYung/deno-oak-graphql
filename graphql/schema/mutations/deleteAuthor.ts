@@ -12,7 +12,7 @@ const deleteAuthor = {
     }
   },
   resolve: (_: any, { input }: any, context: Context): Promise<any> => {
-    return context.repositories.author.delete(input.id)
+    return context.db.author.delete(input.id)
   }
 }
 

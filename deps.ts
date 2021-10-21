@@ -35,8 +35,5 @@ export {
   GraphQLSchema
 } from 'https://cdn.pika.dev/graphql@15.0.0'
 
-export { default as DataLoader } from 'https://cdn.skypack.dev/dataloader?dts'
-export type { BatchLoadFn } from 'https://cdn.skypack.dev/dataloader?dts'
-
-export { connect, Q, Schema, Primary, Model, Column, BaseModel } from 'https://deno.land/x/cotton@v0.7.5/mod.ts'
-export type { OrderDirection } from 'https://deno.land/x/cotton@v0.7.5/src/querybuilder.ts'
+export { DataTypes, Database, Model, MySQLConnector, Relationships } from 'https://deno.land/x/denodb@v1.0.39/mod.ts'
+export type { OrderDirection } from 'https://deno.land/x/denodb@v1.0.39/lib/query-builder.ts'

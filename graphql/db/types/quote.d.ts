@@ -1,4 +1,4 @@
-import type { Quote } from 'types/schema.d.ts'
+import type { Quote, Author } from 'types/schema.d.ts'
 
 export interface FindParameters {
   page: number
@@ -12,8 +12,10 @@ export interface CountParameters {
   query?: string
 }
 
-export default interface AuthorRepository {
+export default interface AuthorDB {
   get(id: number): Promise<Quote>
+
+  author(id: number): Promise<Author>
 
   find(params: FindParameters): Promise<Quote[]>
 

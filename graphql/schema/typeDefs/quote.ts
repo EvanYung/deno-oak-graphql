@@ -33,7 +33,7 @@ const quote = new GraphQLObjectType({
       type: author,
       description: 'Author of the quote',
       resolve: (obj: Quote, _args: IObj, context: Context): Promise<Author> => {
-        return context.loaders.author.load(obj.authorId)
+        return context.db.quote.author(obj.id)
       }
     },
     createdAt: {

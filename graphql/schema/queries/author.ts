@@ -11,7 +11,7 @@ const author = {
     }
   },
   resolve: (_: any, { id }: any, context: Context): Promise<any> => {
-    return context.repositories.author.get(id)
+    return context.db.author.get(id)
   }
 }
 

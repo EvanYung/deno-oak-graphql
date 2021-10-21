@@ -12,7 +12,7 @@ const createAuthor = {
     }
   },
   resolve: (_: any, { input }: any, context: Context): Promise<any> => {
-    return context.repositories.author.create(input)
+    return context.db.author.create(input)
   }
 }
 

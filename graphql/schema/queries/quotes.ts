@@ -31,12 +31,12 @@ export default {
   resolve: async (_: any, args: QuotesQueryArguments, context: Context) => {
     const page = Math.max(args.page || 1, 1) - 1
     const size = args.size
-    const quotes = await context.repositories.quote.find({
+    const quotes = await context.db.quote.find({
       size,
       page,
       query: args.query
     })
-    const quotesCount = await context.repositories.quote.count({
+    const quotesCount = await context.db.quote.count({
       query: args.query
     })
     const edges = nodesToEdges(quotes, page * size)

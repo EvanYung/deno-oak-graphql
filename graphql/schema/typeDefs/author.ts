@@ -58,13 +58,13 @@ const author = new GraphQLObjectType({
       resolve: async (obj: Author, args: any, context: Context): Promise<any> => {
         const page = Math.max(args.page || 1, 1) - 1
 
-        const quotes = await context.repositories.quote.find({
+        const quotes = await context.db.quote.find({
           size: args.size,
           page,
           authorId: obj.id,
           query: args.query
         })
-        const quotesCount = await context.repositories.quote.count({
+        const quotesCount = await context.db.quote.count({
           authorId: obj.id,
           query: args.query
         })

@@ -41,14 +41,14 @@ export default {
     const page = Math.max(args.page || 1, 1) - 1
     const size = args.size
 
-    const authors = await context.repositories.author.find({
+    const authors = await context.db.author.find({
       size,
       page,
       firstName: args.firstName,
       lastName: args.lastName,
       orderBy: args.orderBy
     })
-    const authorsCount = await context.repositories.author.count({
+    const authorsCount = await context.db.author.count({
       firstName: args.firstName,
       lastName: args.lastName
     })

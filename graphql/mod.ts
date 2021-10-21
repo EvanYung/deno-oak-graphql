@@ -3,7 +3,7 @@ import { applyGraphQL } from '../middlewares/applyGraphQL.ts'
 import schema from './schema/mod.ts'
 import context from './context/mod.ts'
 
-import './repositories/mod.ts'
+import './db/mod.ts'
 
 export const GraphQLService = await applyGraphQL<Router>({
   Router,

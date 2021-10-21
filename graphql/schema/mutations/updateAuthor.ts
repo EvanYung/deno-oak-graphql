@@ -12,7 +12,7 @@ const updateAuthor = {
     }
   },
   resolve: (_: any, { input }: any, context: Context): Promise<any> => {
-    return context.repositories.author.update(input)
+    return context.db.author.update(input)
   }
 }
 
