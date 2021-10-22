@@ -7,7 +7,8 @@ class Author extends Model {
   static fields = {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING

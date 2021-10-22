@@ -62,8 +62,8 @@ export default class AuthorDenoDB implements AuthorDB {
     authorModel.firstName = firstName
     authorModel.lastName = lastName
 
-    const author = (await authorModel.save()) as unknown as Author
-
+    const { lastInsertId: id } = await authorModel.save()
+    const author = await this.get(id as number)
     return author
   }
 

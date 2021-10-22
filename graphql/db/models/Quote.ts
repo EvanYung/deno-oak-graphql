@@ -7,7 +7,8 @@ class Quote extends Model {
   static fields = {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     text: DataTypes.STRING
   }

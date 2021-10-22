@@ -10,6 +10,10 @@ Relationships.belongsTo(Quote, Author)
 
 db.link(models)
 
-db.sync()
+try {
+  await db.sync()
+} catch (_err) {
+  //
+}
 
 export default db

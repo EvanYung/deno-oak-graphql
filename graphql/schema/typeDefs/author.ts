@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import { GraphQLID, GraphQLNonNull, GraphQLObjectType, GraphQLString, GraphQLInt } from 'deps'
-import { datetime, BufferNode } from 'deps'
+import { datetime } from 'deps'
 import type Context from '../../context/types.d.ts'
 import quoteConnection from './connections/quoteConnection.ts'
 import nodesToEdges from '../queries/tools/nodesToEdges.ts'
@@ -11,13 +11,6 @@ const author = new GraphQLObjectType({
   name: 'Author',
   fields: () => ({
     id: {
-      type: GraphQLNonNull(GraphQLID),
-      description: 'Globally unique ID of the author',
-      resolve: (obj: Author): string => {
-        return BufferNode.from(`author-${obj.id}`).toString('base64')
-      }
-    },
-    _id: {
       type: GraphQLNonNull(GraphQLID),
       description: 'Database ID of the author',
       resolve: (obj: Author): number => {

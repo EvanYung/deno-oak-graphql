@@ -2,7 +2,7 @@ import { GraphQLID, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'dep
 import type { IObj } from 'types/mod.d.ts'
 import author from './author.ts'
 import Context from '../../context/types.d.ts'
-import { datetime, BufferNode } from 'deps'
+import { datetime } from 'deps'
 import { Quote, Author } from 'types/schema.d.ts'
 
 const quote = new GraphQLObjectType({
@@ -10,16 +10,9 @@ const quote = new GraphQLObjectType({
   fields: () => ({
     id: {
       type: GraphQLNonNull(GraphQLID),
-      description: 'Globally unique ID of the quote',
-      resolve: (obj: Quote): string => {
-        return BufferNode.from(`quote-${obj.id}`).toString('base64')
-      }
-    },
-    _id: {
-      type: GraphQLNonNull(GraphQLID),
       description: 'Database ID of the quote',
-      resolve: (obj: Quote): number => {
-        return obj.id
+      resolve: (obj: IObj): number => {
+        return obj.lastInsertId
       }
     },
     text: {

@@ -1,5 +1,8 @@
 import database from '../../graphql/db/mod.ts'
 import { Author, Quote } from '../../graphql/db/models/mod.ts'
+
+await database.sync({ drop: true })
+
 await database.transaction(async () => {
   await Author.create([
     { id: 1, firstName: 'John', lastName: 'Johnson', createdAt: '2020-07-02 11:06:01' },

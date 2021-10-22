@@ -57,3 +57,5 @@ export function writeJson(path: string, data: IObj) {
     return e.message
   }
 }
+
+export const sleep = (timer: number) => new Promise((resolve) => setTimeout(resolve, timer))
