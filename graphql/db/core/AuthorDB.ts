@@ -54,7 +54,7 @@ export default class AuthorDenoDB implements AuthorDB {
     return count
   }
 
-  public async create(params: CreateParameters): Promise<Author> {
+  public async create(params: CreateParameters): Promise<number> {
     const { firstName, lastName } = params
 
     const authorModel = new AuthorModle()
@@ -63,11 +63,10 @@ export default class AuthorDenoDB implements AuthorDB {
     authorModel.lastName = lastName
 
     const { lastInsertId: id } = await authorModel.save()
-    const author = await this.get(id as number)
-    return author
+    return id as number
   }
 
-  public async update(params: CreateParameters & { id: number }): Promise<Author> {
+  public async update(params: CreateParameters & { id: number }): Promise<boolean> {
     const { id } = params
 
     const authorModel = await AuthorModle.where('id', id).first()
@@ -75,24 +74,25 @@ export default class AuthorDenoDB implements AuthorDB {
     if (!authorModel) {
       throw new Error('Author not found!')
     }
+
     const queryUpdate = omitPlus(params, 'id', isUnDef)
 
     Object.assign(authorModel, queryUpdate)
 
-    const author = (await authorModel.save()) as unknown as Author
+    await authorModel.update()
 
-    return author
+    return true
   }
 
-  public async delete(id: number): Promise<Author> {
+  public async delete(id: number): Promise<boolean> {
     const authorModel = await AuthorModle.where('id', id).first()
 
     if (!authorModel) {
       throw new Error('Author not found!')
     }
 
-    const author = (await authorModel.delete()) as unknown as Author
+    await authorModel.delete()
 
-    return author
+    return true
   }
 }

@@ -1,11 +1,10 @@
 // deno-lint-ignore-file no-explicit-any
-import { GraphQLNonNull } from 'deps'
+import { GraphQLNonNull, GraphQLBoolean } from 'deps'
 import type Context from '../../context/types.d.ts'
-import { default as authorType } from '../typeDefs/author.ts'
 import editAuthor from '../typeDefs/inputs/editAuthor.ts'
 
 const updateAuthor = {
-  type: authorType,
+  type: GraphQLBoolean,
   args: {
     input: {
       type: GraphQLNonNull(editAuthor)

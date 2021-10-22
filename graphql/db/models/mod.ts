@@ -1,6 +1,8 @@
+import { Relationships } from 'deps'
+
 import Author from './Author.ts'
 import Quote from './Quote.ts'
 
-export { Author, Quote }
+Relationships.belongsTo(Quote, Author)
 
 export default [Author, Quote]

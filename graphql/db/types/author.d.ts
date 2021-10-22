@@ -21,13 +21,13 @@ export interface CountParameters {
 export default interface AuthorDB {
   get(id: number): Promise<Author>
 
-  create(params: CreateParameters): Promise<Author>
+  create(params: CreateParameters): Promise<number>
 
-  update(params: CreateParameters & { id: number }): Promise<Author>
+  update(params: CreateParameters & { id: number }): Promise<boolean>
 
   find(params: FindParameters): Promise<Author[]>
 
   count(params: CountParameters): Promise<number>
 
-  delete(id: number): Promise<Author>
+  delete(id: number): Promise<boolean>
 }
