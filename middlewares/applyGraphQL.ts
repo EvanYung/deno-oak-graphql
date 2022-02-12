@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-explicit-any require-await
 import { graphql } from '../deps.ts'
-import { renderPlaygroundPage } from 'https://deno.land/x/oak_graphql@0.6.2/graphql-playground-html/render-playground-html.ts'
-import { makeExecutableSchema } from 'https://deno.land/x/oak_graphql@0.6.2/graphql-tools/schema/makeExecutableSchema.ts'
+import { renderPlaygroundPage } from 'https://deno.land/x/oak_graphql@0.6.3/graphql-playground-html/render-playground-html.ts'
+import { makeExecutableSchema } from 'https://deno.land/x/oak_graphql@0.6.3/graphql-tools/schema/makeExecutableSchema.ts'
 
 interface Constructable<T> {
   new (...args: any): T & OakRouter
