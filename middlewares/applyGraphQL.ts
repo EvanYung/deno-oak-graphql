@@ -1,7 +1,11 @@
-// deno-lint-ignore-file no-explicit-any require-await
-import { graphql } from '../deps.ts'
-import { renderPlaygroundPage } from 'https://deno.land/x/oak_graphql@0.6.3/graphql-playground-html/render-playground-html.ts'
+// deno-lint-ignore-file no-explicit-any
+import { graphql, gql } from 'deps'
+import {
+  renderPlaygroundPage,
+  ISettings
+} from 'https://deno.land/x/oak_graphql@0.6.3/graphql-playground-html/render-playground-html.ts'
 import { makeExecutableSchema } from 'https://deno.land/x/oak_graphql@0.6.3/graphql-tools/schema/makeExecutableSchema.ts'
+import { fileUploadMiddleware, GraphQLUpload } from 'https://deno.land/x/oak_graphql@0.6.3/fileUpload.ts'
 
 interface Constructable<T> {
   new (...args: any): T & OakRouter
@@ -16,11 +20,11 @@ export interface ApplyGraphQLOptions<T> {
   Router: Constructable<T>
   path?: string
   typeDefs?: any
-  resolvers?: ResolversProps
-
   schema: any
+  resolvers?: ResolversProps
   context?: (ctx: any) => any
   usePlayground?: boolean
+  settings?: ISettings
 }
 
 export interface ResolversProps {
@@ -34,22 +38,44 @@ export async function applyGraphQL<T>({
   path = '/graphql',
   typeDefs,
   resolvers,
-  schema,
   context,
-  usePlayground = true
+  schema,
+  usePlayground = true,
+  settings
 }: ApplyGraphQLOptions<T>): Promise<T> {
   const router = new Router()
 
-  schema = schema || makeExecutableSchema({ typeDefs, resolvers })
+  const augmentedTypeDefs = Array.isArray(typeDefs) ? typeDefs : [typeDefs]
+  augmentedTypeDefs.push(
+    gql`
+      scalar Upload
+    `
+  )
+  if (Array.isArray(resolvers)) {
+    if (resolvers.every((resolver) => !resolver.Upload)) {
+      resolvers.push({ Upload: GraphQLUpload })
+    }
+  } else {
+    if (resolvers && !resolvers.Upload) {
+      resolvers.Upload = GraphQLUpload
+    }
+  }
 
-  await router.post(path, async (ctx: any) => {
+  const _schema =
+    schema ||
+    makeExecutableSchema({
+      typeDefs: augmentedTypeDefs,
+      resolvers: [resolvers]
+    })
+
+  await router.post(path, fileUploadMiddleware, async (ctx: any) => {
     const { response, request } = ctx
     if (request.hasBody) {
       try {
         const contextResult = context ? await context(ctx) : undefined
-        const body = await request.body().value
-        const result = await graphql(
-          schema,
+        const body = ctx.params.operations || (await request.body().value)
+        const result = await (graphql as any)(
+          _schema,
           body.query,
           resolvers,
           contextResult,
@@ -75,7 +101,7 @@ export async function applyGraphQL<T>({
     }
   })
 
-  await router.get(path, async (ctx: any) => {
+  await router.get(path, (ctx: any) => {
     const { request, response } = ctx
     if (usePlayground) {
       // perform more expensive content-type check only if necessary
@@ -86,7 +112,8 @@ export async function applyGraphQL<T>({
       if (prefersHTML) {
         const playground = renderPlaygroundPage({
           endpoint: request.url.origin + path,
-          subscriptionEndpoint: request.url.origin
+          subscriptionEndpoint: request.url.origin,
+          settings
         })
         response.status = 200
         response.body = playground
