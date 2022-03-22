@@ -1,6 +1,8 @@
 import { config } from './deps.ts'
 
-const env = config()
+const mode = Deno.env.get('mode') || 'prod'
+
+const env = config({ path: `.env.${mode}` })
 
 export const port = Number(env.PORT)
 
