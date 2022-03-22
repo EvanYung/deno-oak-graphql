@@ -6,11 +6,13 @@ import QuoteModel from '../models/Quote.ts'
 export default class QuoteDenoDB implements QuoteDB {
   public async get(id: number): Promise<Quote> {
     const quote = (await QuoteModel.where('id', id).first()) as unknown as Quote
+
     return quote
   }
 
   public async author(id: number): Promise<Author> {
     const author = (await QuoteModel.where('id', id).author()) as unknown as Author
+
     return author
   }
 
@@ -37,6 +39,7 @@ export default class QuoteDenoDB implements QuoteDB {
 
   public async count(params: CountParameters): Promise<number> {
     const { authorId, query } = params
+    
     const queryBuilder = QuoteModel
 
     if (!isNullOrUnDef(authorId)) {

@@ -28,6 +28,7 @@ export default class AuthorDenoDB implements AuthorDB {
     if (Array.isArray(orderBy)) {
       orderBy.forEach((ob) => queryBuilder.orderBy(ob.field, ob.direction))
     }
+
     const authors = (await queryBuilder
       .offset(page * size)
       .limit(size)
@@ -60,9 +61,11 @@ export default class AuthorDenoDB implements AuthorDB {
     const authorModel = new AuthorModle()
 
     authorModel.firstName = firstName
+
     authorModel.lastName = lastName
 
     const { lastInsertId: id } = await authorModel.save()
+    
     return id as number
   }
 

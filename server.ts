@@ -14,6 +14,7 @@ app.addEventListener('error', (evt) => {
 
 // logger
 app.use(logger.logger)
+
 app.use(logger.responseTime)
 
 // static

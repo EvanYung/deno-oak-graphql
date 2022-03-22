@@ -33,7 +33,8 @@ export {
   GraphQLEnumType,
   GraphQLInputObjectType,
   GraphQLSchema
-} from 'https://cdn.pika.dev/graphql@15.0.0'
+} from 'https://cdn.skypack.dev/graphql@15.0.0'
 
 export { DataTypes, Database, Model, MySQLConnector, Relationships } from 'https://deno.land/x/denodb@v1.0.39/mod.ts'
+
 export type { OrderDirection } from 'https://deno.land/x/denodb@v1.0.39/lib/query-builder.ts'

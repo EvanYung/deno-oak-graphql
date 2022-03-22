@@ -39,6 +39,7 @@ export default {
   },
   resolve: async (_: any, args: AuthorsQueryArguments, context: Context) => {
     const page = Math.max(args.page || 1, 1) - 1
+
     const size = args.size
 
     const authors = await context.db.author.find({
@@ -48,11 +49,14 @@ export default {
       lastName: args.lastName,
       orderBy: args.orderBy
     })
+
     const authorsCount = await context.db.author.count({
       firstName: args.firstName,
       lastName: args.lastName
     })
+
     const edges = nodesToEdges(authors, page * size)
+
     return toConnection(edges, authorsCount)
   }
 }

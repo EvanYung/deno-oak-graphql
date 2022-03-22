@@ -57,11 +57,14 @@ const author = new GraphQLObjectType({
           authorId: obj.id,
           query: args.query
         })
+
         const quotesCount = await context.db.quote.count({
           authorId: obj.id,
           query: args.query
         })
+
         const edges = nodesToEdges(quotes, page)
+        
         return toConnection(edges, quotesCount)
       }
     },
