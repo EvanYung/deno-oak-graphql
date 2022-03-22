@@ -19,7 +19,7 @@ export * as colors from 'https://deno.land/std@0.106.0/fmt/colors.ts'
 
 export * as datetime from 'https://deno.land/std@0.106.0/datetime/mod.ts'
 
-export { applyGraphQL, gql, GQLError } from 'https://deno.land/x/oak_graphql@0.6.2/mod.ts'
+export { applyGraphQL, gql, GQLError } from 'https://deno.land/x/oak_graphql@0.6.3/mod.ts'
 
 export {
   graphql,
